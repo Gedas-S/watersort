@@ -22,6 +22,10 @@
     vertical-align: text-bottom;
 }
 
+.capped {
+    border-top: 1em solid;
+}
+
 .selected-bottle {
     margin-top: 1em;
     margin-bottom: 2em;

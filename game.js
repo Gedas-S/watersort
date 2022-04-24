@@ -1,3 +1,5 @@
+let BOTTLE_SPACE = 20;
+
 function select_bottle() {
     let selected = document.getElementsByClassName("selected-bottle")
     
@@ -24,7 +26,7 @@ function deselect(bottle) {
 
 function pour(source, target) {
     let color = source.lastChild.style.backgroundColor
-    let bottle_space = 20;
+    let bottle_space = BOTTLE_SPACE;
     for (const water of target.children) {
         bottle_space -= parseFloat(water.style.height)
     }
@@ -39,6 +41,7 @@ function pour(source, target) {
         let amount = bottle_space
         amount = remove_water(source, amount)
         add_water(target, color, amount)
+        cap_full_with_single_color(target)
         check_win()
     }
 
@@ -53,6 +56,13 @@ function remove_water(source, bottle_space) {
         source.removeChild(source.lastChild)
     }
     return amount
+}
+
+function cap_full_with_single_color(bottle){
+    if (bottle.children.length == 1 && parseFloat(bottle.lastChild.style.height) == BOTTLE_SPACE){
+        bottle.classList.add("capped")
+        bottle.removeEventListener("click", select_bottle)
+    }
 }
 
 function check_win() {
