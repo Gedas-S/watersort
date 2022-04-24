@@ -121,11 +121,17 @@ function make_level(n) {
     }
 
     const game = document.getElementById("game")
+    game.replaceChildren([])
     for (const bottle of bottles) {
         game.appendChild(bottle)
     }
 }
 
 function setup_level() {
-    make_level(10)
+    let level = parseInt(localStorage.getItem("level"))
+    if (!level) {
+        level = 1
+        localStorage.setItem("level", "1")
+    }
+    make_level(level)
 }

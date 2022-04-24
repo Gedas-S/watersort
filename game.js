@@ -45,11 +45,21 @@ function pour(source, target) {
 }
 
 function check_win() {
+    let empty = 0
     for (const bottle of document.getElementsByClassName("bottle")) {
         if (bottle.children.length >= 2) {
-            return false
+            return
+        }
+        if (bottle.children.length == 0) {
+            empty++
         }
     }
+    if (empty < 2) {
+        return
+    }
+    
     console.log("VICTORY!!!")
-    return true
+    const old_level = parseInt(localStorage.getItem("level"))
+    localStorage.setItem("level", old_level + 1 + "")
+    make_level(old_level + 1)
 }
