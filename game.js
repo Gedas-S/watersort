@@ -17,9 +17,9 @@ function select_bottle() {
 
 function pour(source, target) {
     let color = source.lastChild.style.backgroundColor
-    let bottle_space = 20;
+    let bottle_space = BOTTLE_HEIGHT;
     for (const water of target.children) {
-        bottle_space -= parseFloat(water.style.height)
+        bottle_space -= get_height(water)
     }
 
     if (bottle_space <= 0) {
@@ -31,9 +31,9 @@ function pour(source, target) {
         return
     }
 
-    let amount = parseFloat(source.lastChild.style.height)
+    let amount = get_height(source.lastChild)
     if (amount > bottle_space) {
-        source.lastChild.style.height = amount - bottle_space + "em"
+        add_height(source.lastChild, -bottle_space)
         amount = bottle_space
     } else {
         source.removeChild(source.lastChild)
