@@ -23,11 +23,11 @@ function pour(source, target) {
     }
 
     if (bottle_space <= 0) {
-        console.log("target bottle full")
+        display("target bottle full")
         return
     }
     if (target.lastChild && color != target.lastChild.style.backgroundColor) {
-        console.log("pouring on wrong color")
+        display("pouring on wrong color")
         return
     }
 
@@ -50,6 +50,6 @@ function check_win() {
             return false
         }
     }
-    console.log("VICTORY!!!")
+    display("VICTORY!!!")
     return true
 }
