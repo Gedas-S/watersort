@@ -71,7 +71,21 @@ function check_win() {
     }
 
     display("VICTORY!!!")
-    const old_level = parseInt(localStorage.getItem("level"))
-    localStorage.setItem("level", old_level + 1 + "")
-    make_level(old_level + 1)
+    const old_level = parseInt(localStorage.getItem("water-level"))
+    localStorage.setItem("water-level", old_level + 1 + "")
+
+    const level = make_level(old_level + 1)
+    const game = document.getElementById("game")
+    if (localStorage.getItem("water-disable-transitions") == "true") {
+        game.replaceChildren(level)
+        return
+    }
+
+    game.classList.add("transition")
+    game.appendChild(level)
+    const finish_transition = () => {
+        game.classList.remove("transition")
+        game.removeChild(game.firstChild)
+    }
+    setTimeout(finish_transition, 1000)
 }

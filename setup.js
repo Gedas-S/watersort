@@ -25,7 +25,7 @@ function add_water(bottle, color, amount) {
     bottle.appendChild(fluid)
 }
 
-function make_bottle(color) {
+function add_bottle(color) {
     const bottle = document.createElement("div")
     bottle.classList.add("bottle")
     bottle.addEventListener("click", select_bottle)
@@ -49,14 +49,14 @@ function make_level(n) {
     const color_step = color_list.length / color_count / 2
     for (let i = 0; i < color_count; i++) {
         const color = color_list[Math.floor(color_step * (i * 2 + 1))]
-        const bottle = make_bottle(color)
+        const bottle = add_bottle(color)
         bottles.push(bottle)
         sources.push(i)
         free_space[i] = 0
     }
     // two extra empty bottles
     for (let i = color_count; i < 2 + color_count; i++) {
-        bottles.push(make_bottle())
+        bottles.push(add_bottle())
         targets.push(i)
         free_space[i] = BOTTLE_HEIGHT
     }
@@ -131,18 +131,19 @@ function make_level(n) {
         }
     }
 
-    const game = document.getElementById("game")
-    game.replaceChildren([])
-    for (const bottle of bottles) {
-        game.appendChild(bottle)
-    }
+    let game = document.createElement("div")
+    game.classList.add("level")
+    game.replaceChildren(...bottles)
+    return game
 }
 
 function setup_level() {
-    let level = parseInt(localStorage.getItem("level"))
+    let level = parseInt(localStorage.getItem("water-level"))
     if (!level) {
         level = 1
-        localStorage.setItem("level", "1")
+        localStorage.setItem("water-level", "1")
     }
-    make_level(level)
+    
+    const game = document.getElementById("game")
+    game.appendChild(make_level(level))
 }

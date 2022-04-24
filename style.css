@@ -1,6 +1,7 @@
 body {
     width: 100%;
     margin: 0;
+    overflow-x: hidden;
 }
 
 #messages {
@@ -11,14 +12,28 @@ body {
 }
 
 #game {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    position: relative;
+    left: 0;
 }
-
+#game.transition {
+    transition: left 1000ms ease-in-out;
+    left: -100%;
+    width: 200%
+}
 #game * {
     box-sizing: content-box;
 }
+
+.level {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#game.transition .level {
+    width: 50%
+}
+
 
 .bottle {
     width: 3em;
