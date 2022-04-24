@@ -8,7 +8,8 @@ body {
     width: 100%;
     text-align: center;
     font-size: 1.7em;
-    font-family: 'Corbel', Trebuchet MS, Arial, sans-serif
+    font-family: 'Corbel', 'Trebuchet MS', Arial, sans-serif;
+    margin-top: 0.5em;
 }
 
 #game {
@@ -18,7 +19,7 @@ body {
 #game.transition {
     transition: left 1000ms ease-in-out;
     left: -100%;
-    width: 200%
+    width: 200%;
 }
 #game * {
     box-sizing: content-box;
@@ -40,7 +41,7 @@ body {
     height: 20em;
     padding-top: 1em;
     margin: 1em;
-    margin-top: 2em;
+    margin-top: 3em;
     transition: margin 300ms, padding 500ms, border 500ms;
     border: 0.25em solid black;
     border-top: 0;
@@ -59,7 +60,7 @@ body {
     background-size: 3em 2.16em;
     transition: top 500ms, height 500ms;
     position: absolute;
-    top: 2em;
+    top: 3em;
 }
 
 .capped {
@@ -67,7 +68,7 @@ body {
     border-top: 1em solid black;
 }
 .capped::after {
-    top: -0.16em;
+    top: 0.84em;
     height: 2.16em;
 }
 
