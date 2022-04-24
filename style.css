@@ -35,7 +35,7 @@ body {
     flex-wrap: wrap;
 }
 #game.transition .level {
-    width: 50%
+    width: 50%;
 }
 
 
@@ -114,5 +114,18 @@ body {
 }
 
 #menu {
-    text-align: center
+    text-align: center;
+}
+#menu > div {
+    margin-top: 1em;
+}
+input[type="checkbox"] {
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+}
+input[type="number"] {
+    font-size: 1em;
+    vertical-align: middle;
+    margin-top: -0.2em;
 }
