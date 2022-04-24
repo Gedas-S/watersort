@@ -93,6 +93,10 @@ function make_level(n) {
             }
             amount = free_space[targets[target_index]]
         }
+        if (!split && source.children.length == 1) {
+            // the move is non-reversible, abort
+            continue
+        }
         // move
         if (!split) {
             const water = source.lastChild
