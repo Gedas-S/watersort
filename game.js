@@ -64,18 +64,12 @@ function cap_full_with_single_color(bottle){
 }
 
 function check_win() {
-    let empty = 0
     for (const bottle of document.getElementsByClassName("bottle")) {
-        if (bottle.children.length >= 2) {
+        if (bottle.children.length != 0 && !bottle.classList.contains("capped")) {
             return
         }
-        if (bottle.children.length == 0) {
-            empty++
-        }
     }
-    if (empty < 2) {
-        return
-    }
+
     display("VICTORY!!!")
     const old_level = parseInt(localStorage.getItem("level"))
     localStorage.setItem("level", old_level + 1 + "")
