@@ -7,7 +7,7 @@ function random_generator(seed) {
     let a = 0x9E3779B9, b = 0x243F6A88, c = 0xB7E15162
     let d = seed ^ 0xDEADBEEF; // 32-bit seed with optional XOR value
 
-    const sfc32 = (range) => {
+    const sfc32 = () => {
         a >>>= 0; b >>>= 0; c >>>= 0; d >>>= 0
         let t = (a + b) | 0
         a = b ^ b >>> 9
@@ -16,7 +16,7 @@ function random_generator(seed) {
         d = d + 1 | 0
         t = t + d | 0
         c = c + t | 0
-        return Math.floor((t >>> 0) * range / 4294967296)
+        return (t >>> 0) / 4294967296
     }
 
     for (let i = 0; i < 15; i++) sfc32();
