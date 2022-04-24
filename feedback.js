@@ -20,6 +20,13 @@ const victory_message = [
     "Grand slam!",
     "High five!",
     "Glory!",
+    "Good job!",
+    "Nailed it!",
+    "Bestest water pourer",
+    "Thirsty?",
+    "Pour some more!",
+    "Hydrate!",
+    "H2O of fun",
 ]
 
 function display_victory_message() {
