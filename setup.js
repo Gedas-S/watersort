@@ -120,6 +120,17 @@ function make_level(n) {
         }
     }
 
+    // cleanup
+    for (const bottle of bottles) {
+        for (let i = bottle.children.length - 1; i > 0; i--) {
+            if (bottle.children[i].style.backgroundColor != bottle.children[i-1].style.backgroundColor) {
+                continue
+            }
+            add_height(bottle.children[i-1], get_height(bottle.children[i]))
+            bottle.removeChild(bottle.children[i])
+        }
+    }
+
     const game = document.getElementById("game")
     game.replaceChildren([])
     for (const bottle of bottles) {
