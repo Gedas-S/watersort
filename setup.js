@@ -131,19 +131,63 @@ function make_level(n) {
         }
     }
 
-    let game = document.createElement("div")
-    game.classList.add("level")
-    game.replaceChildren(...bottles)
-    return game
+    let level = document.createElement("div")
+    level.classList.add("level")
+    level.replaceChildren(...bottles)
+    return level
 }
 
-function setup_level() {
+function start_game() {
     let level = parseInt(localStorage.getItem("water-level"))
     if (!level) {
         level = 1
         localStorage.setItem("water-level", "1")
     }
+    let level_data = load_level()
+    if (!level_data) {
+        level_data = make_level(level)
+    }
     
     const game = document.getElementById("game")
-    game.appendChild(make_level(level))
+    game.appendChild(level_data)
+}
+
+function save_level() {
+    const level = document.getElementById("game").lastChild
+    let level_data = []
+    for (const bottle of level.children) {
+        let bottle_data = []
+        for (const fluid of bottle.children) {
+            bottle_data.push({c: fluid.style.backgroundColor, a: get_height(fluid)})
+        }
+        level_data.push(bottle_data)
+    }
+    localStorage.setItem("water-save", JSON.stringify(level_data))
+}
+
+function load_level() {
+    try {
+        const save_data = localStorage.getItem("water-save")
+        if (!save_data) {
+            return false
+        }
+        const level_data = JSON.parse(save_data)
+        let bottles = []
+        for (const bottle_data of level_data) {
+            let bottle = add_bottle()
+            for (fluid_data of bottle_data) {
+                add_water(bottle, fluid_data.c, fluid_data.a)
+            }
+            cap_full_with_single_color(bottle)
+            bottles.push(bottle)
+        }
+        let game = document.createElement("div")
+        game.classList.add("level")
+        game.replaceChildren(...bottles)
+        return game
+    }
+    catch(err) {
+        console.error("Error loading level data: " + err.message)
+        return
+    }
 }

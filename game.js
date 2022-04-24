@@ -41,6 +41,7 @@ function pour(source, target) {
         add_water(target, color, amount)
         cap_full_with_single_color(target)
         check_win()
+        save_level()
     }
 
 }
