@@ -1,5 +1,3 @@
-let BOTTLE_SPACE = 20;
-
 function select_bottle() {
     let selected = document.getElementsByClassName("selected-bottle")
     
@@ -26,9 +24,9 @@ function deselect(bottle) {
 
 function pour(source, target) {
     let color = source.lastChild.style.backgroundColor
-    let bottle_space = BOTTLE_SPACE;
+    let bottle_space = BOTTLE_HEIGHT;
     for (const water of target.children) {
-        bottle_space -= parseFloat(water.style.height)
+        bottle_space -= get_height(water)
     }
 
     if (bottle_space <= 0) {
@@ -48,9 +46,9 @@ function pour(source, target) {
 }
 
 function remove_water(source, bottle_space) {
-    let amount = parseFloat(source.lastChild.style.height)
+    let amount = get_height(source.lastChild)
     if (amount > bottle_space) {
-        source.lastChild.style.height = amount - bottle_space + "em"
+        add_height(source.lastChild, -bottle_space)
         amount = bottle_space
     } else {
         source.removeChild(source.lastChild)
@@ -59,18 +57,27 @@ function remove_water(source, bottle_space) {
 }
 
 function cap_full_with_single_color(bottle){
-    if (bottle.children.length == 1 && parseFloat(bottle.lastChild.style.height) == BOTTLE_SPACE){
+    if (bottle.children.length == 1 && get_height(bottle.lastChild) == BOTTLE_HEIGHT){
         bottle.classList.add("capped")
         bottle.removeEventListener("click", select_bottle)
     }
 }
 
 function check_win() {
+    let empty = 0
     for (const bottle of document.getElementsByClassName("bottle")) {
         if (bottle.children.length >= 2) {
-            return false
+            return
+        }
+        if (bottle.children.length == 0) {
+            empty++
         }
     }
+    if (empty < 2) {
+        return
+    }
     display("VICTORY!!!")
-    return true
+    const old_level = parseInt(localStorage.getItem("level"))
+    localStorage.setItem("level", old_level + 1 + "")
+    make_level(old_level + 1)
 }
