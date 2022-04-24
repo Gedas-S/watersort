@@ -27,4 +27,20 @@ function load_menu() {
             "water-slow-transitions", document.getElementById("slow").checked
         )}
     );
+
+    const dark_config = document.getElementById("dark")
+    dark_config.checked = localStorage.getItem("water-dark-mode") == "true"
+    dark_config.addEventListener(
+        "change", 
+        () => {
+            localStorage.setItem(
+                "water-dark-mode", document.getElementById("dark").checked
+            )
+            document.body.style.transition = "color 1000ms, background-color 1000ms"
+            document.body.classList.toggle("dark")
+        }
+    );
+    if (localStorage.getItem("water-dark-mode") == "true") {
+        document.body.classList.add("dark")
+    }
 }

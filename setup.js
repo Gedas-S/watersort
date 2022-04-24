@@ -158,6 +158,9 @@ function start_game() {
     if (localStorage.getItem("water-slow-transitions") == "true") {
         game.classList.add("slow")
     }
+    if (localStorage.getItem("water-dark-mode") == "true") {
+        document.body.classList.add("dark")
+    }
     setup_menu()
 }
 

@@ -2,6 +2,11 @@ body {
     width: 100%;
     margin: 0;
     overflow-x: hidden;
+    color: black;
+}
+body.dark {
+    background-color: black;
+    color:#BBB
 }
 
 #messages, #menu {
@@ -55,6 +60,9 @@ body {
     vertical-align: text-bottom;
     touch-action: manipulation;
 }
+.dark .bottle {
+    border-color: gray;
+}
 .bottle::after {
     content: "";
     height: 0;
@@ -65,6 +73,9 @@ body {
     transition: top 500ms, height 500ms;
     position: absolute;
     top: 3em;
+}
+.dark .bottle::after {
+    filter: invert(0.5);
 }
 .slow .bottle::after {
     transition: top 1500ms, height 1500ms;
@@ -108,8 +119,12 @@ body {
     padding: 0;
     text-align: center;
     touch-action: manipulation;
+    color: black
 }
-.inactive {
+.dark #toolbar div {    
+    color: #BBB
+}
+#toolbar div.inactive {
     color: #999;
 }
 
