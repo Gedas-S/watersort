@@ -155,6 +155,9 @@ function start_game() {
     const game = document.getElementById("game")
     game.appendChild(level_data)
 
+    if (localStorage.getItem("water-slow-transitions") == "true") {
+        game.classList.add("slow")
+    }
     setup_menu()
 }
 

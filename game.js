@@ -106,5 +106,8 @@ function transition_level(level) {
     }
     undo_history = []
     check_button_status()
-    setTimeout(finish_transition, 1000)
+    setTimeout(
+        finish_transition, 
+        localStorage.getItem("water-slow-transitions") == "true" ? 5000 : 1000
+    )
 }

@@ -1,31 +1,30 @@
-function setup_menu() {
-    document.getElementById("reset-button").addEventListener("click", reset_level)
-    document.getElementById("undo-button").addEventListener("click", perform_undo)
-    check_button_status()
-}
+function load_menu() {
+    const level_config = document.getElementById("level")
+    level_config.value = parseInt(localStorage.getItem("water-level"))
+    level_config.addEventListener(
+        "input", 
+        () => {localStorage.setItem(
+            "water-level", 
+            document.getElementById("level").value
+        )}
+    );
 
-function reset_level() {
-    transition_level(make_level(parseInt(localStorage.getItem("water-level"))))
-}
+    const transition_config = document.getElementById("transitions")
+    transition_config.checked = localStorage.getItem("water-disable-transitions") != "true"
+    transition_config.addEventListener(
+        "change", 
+        () => {localStorage.setItem(
+            "water-disable-transitions", 
+            !document.getElementById("transitions").checked
+        )}
+    );
 
-function perform_undo() {
-    const event = undo_history.pop()
-    if (!event) {
-        return
-    }
-    const bottles = document.getElementById("game").lastChild.children
-    add_water(bottles[event.s], bottles[event.t].lastChild.style.backgroundColor, event.a)
-    remove_water(bottles[event.t], event.a)
-    save_level()
-}
-
-function check_button_status() {
-    const inactive = document.getElementById("undo-button").classList.contains("inactive")
-    if (undo_history.length && inactive) {
-        document.getElementById("undo-button").classList.remove("inactive")
-        document.getElementById("reset-button").classList.remove("inactive")
-    } else if (!undo_history.length && !inactive) {
-        document.getElementById("undo-button").classList.add("inactive")
-        document.getElementById("reset-button").classList.add("inactive")
-    }
+    const slow_config = document.getElementById("slow")
+    slow_config.checked = localStorage.getItem("water-slow-transitions") == "true"
+    slow_config.addEventListener(
+        "change", 
+        () => {localStorage.setItem(
+            "water-slow-transitions", document.getElementById("slow").checked
+        )}
+    );
 }

@@ -4,7 +4,7 @@ body {
     overflow-x: hidden;
 }
 
-#messages {
+#messages, #menu {
     width: 100%;
     text-align: center;
     font-size: 1.7em;
@@ -20,6 +20,9 @@ body {
     transition: left 1000ms ease-in-out;
     left: -100%;
     width: 200%;
+}
+#game.transition.slow {
+    transition: left 5000ms ease-in-out;
 }
 #game * {
     box-sizing: content-box;
@@ -63,6 +66,9 @@ body {
     position: absolute;
     top: 3em;
 }
+.slow .bottle::after {
+    transition: top 1500ms, height 1500ms;
+}
 
 .capped {
     padding-top: 0;
@@ -93,7 +99,7 @@ body {
     right: 0;
     z-index: 1000;
 }
-#toolbar > div {    
+#toolbar div {    
     display: inline-block;
     cursor: pointer;
     font-size: 2.5em;
@@ -105,4 +111,8 @@ body {
 }
 .inactive {
     color: #999;
+}
+
+#menu {
+    text-align: center
 }
