@@ -169,6 +169,7 @@ function save_level() {
         level_data.push(bottle_data)
     }
     localStorage.setItem("water-save", JSON.stringify(level_data))
+    localStorage.setItem("water-undo", JSON.stringify(undo_history))
 }
 
 function load_level() {
@@ -190,6 +191,7 @@ function load_level() {
         let game = document.createElement("div")
         game.classList.add("level")
         game.replaceChildren(...bottles)
+        undo_history = JSON.parse(localStorage.getItem("water-undo"))
         return game
     }
     catch(err) {

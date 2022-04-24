@@ -1,3 +1,5 @@
+var undo_history = []
+
 function select_bottle() {
     let selected = document.getElementsByClassName("selected-bottle")
     
@@ -40,7 +42,14 @@ function pour(source, target) {
         amount = remove_water(source, amount)
         add_water(target, color, amount)
         cap_full_with_single_color(target)
+
+        const siblings = Array.from(source.parentNode.children)
+        undo_history.push(
+            {s: siblings.indexOf(source), t: siblings.indexOf(target), a: amount}
+        )
+
         check_win()
+        check_button_status()
         save_level()
     }
 
@@ -61,6 +70,9 @@ function cap_full_with_single_color(bottle){
     if (bottle.children.length == 1 && get_height(bottle.lastChild) == BOTTLE_HEIGHT){
         bottle.classList.add("capped")
         bottle.removeEventListener("click", select_bottle)
+    } else if (bottle.classList.contains("capped")) {
+        bottle.classList.remove("capped")
+        bottle.addEventListener("click", select_bottle)
     }
 }
 
@@ -92,5 +104,7 @@ function transition_level(level) {
         game.classList.remove("transition")
         game.removeChild(game.firstChild)
     }
+    undo_history = []
+    check_button_status()
     setTimeout(finish_transition, 1000)
 }
