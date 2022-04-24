@@ -1,0 +1,34 @@
+#game * {
+    box-sizing: content-box;
+}
+
+.bottle {
+    width: 2.5em;
+    height: 20em;
+    padding-top: 1em;
+    margin: 1em;
+    margin-top: 2em;
+    transition: margin 500ms;
+    border: 0.25em solid black;
+    border-top: 0;
+    border-radius: 0 0 2.5em 2.5em;
+
+    display: inline-flex;
+    flex-direction: column-reverse;
+    vertical-align: text-bottom;
+}
+
+.selected-bottle {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.water {
+    width: 2.5em;
+    background-color: blue;
+    height: 4em;
+}
+
+.water:first-of-type {
+    border-radius: 0 0 2.5em 2.5em;
+}
