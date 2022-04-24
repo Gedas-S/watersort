@@ -70,7 +70,7 @@ function check_win() {
         }
     }
 
-    display("VICTORY!!!")
+    display_victory_message()
     const old_level = parseInt(localStorage.getItem("water-level"))
     localStorage.setItem("water-level", old_level + 1 + "")
 
