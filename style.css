@@ -58,7 +58,7 @@ body {
     background-repeat: no-repeat;
     background-size: 3em 2.16em;
     transition: top 500ms, height 500ms;
-    position:absolute;
+    position: absolute;
     top: 2em;
 }
 
