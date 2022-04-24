@@ -84,3 +84,20 @@ body {
 .water:first-of-type {
     border-radius: 0 0 1.75em 1.75em;
 }
+
+#toolbar {
+    height: 2.5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+#toolbar > div {    
+    display: inline-block;
+    cursor: pointer;
+    font-size: 2.5em;
+    height: 1.5em;
+    width: 1.5em;
+    padding: 0;
+    text-align: center;
+}

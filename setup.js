@@ -150,6 +150,8 @@ function start_game() {
     
     const game = document.getElementById("game")
     game.appendChild(level_data)
+
+    setup_menu()
 }
 
 function save_level() {

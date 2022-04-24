@@ -76,6 +76,10 @@ function check_win() {
     localStorage.setItem("water-level", old_level + 1 + "")
 
     const level = make_level(old_level + 1)
+    transition_level(level)
+}
+
+function transition_level(level) {
     const game = document.getElementById("game")
     if (localStorage.getItem("water-disable-transitions") == "true") {
         game.replaceChildren(level)
