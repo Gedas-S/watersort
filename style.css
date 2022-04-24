@@ -50,6 +50,7 @@ body {
     display: inline-flex;
     flex-direction: column-reverse;
     vertical-align: text-bottom;
+    touch-action: manipulation;
 }
 .bottle::after {
     content: "";
@@ -100,6 +101,7 @@ body {
     width: 1.5em;
     padding: 0;
     text-align: center;
+    touch-action: manipulation;
 }
 .inactive {
     color: #999;
