@@ -50,10 +50,25 @@ body {
     flex-direction: column-reverse;
     vertical-align: text-bottom;
 }
+.bottle::after {
+    content: "";
+    height: 0;
+    width: 3em;
+    background-image: url("assets/mystical-unicorn.png");
+    background-repeat: no-repeat;
+    background-size: 3em 2.16em;
+    transition: top 500ms, height 500ms;
+    position: absolute;
+    top: 2em;
+}
 
 .capped {
     padding-top: 0;
     border-top: 1em solid black;
+}
+.capped::after {
+    top: -0.16em;
+    height: 2.16em;
 }
 
 .selected-bottle {
