@@ -69,6 +69,7 @@ body.dark {
     content: "";
     height: 0;
     width: 3em;
+    -webkit-mask: url("assets/mystical-unicorn.svg") 3em 0;
     mask: url("assets/mystical-unicorn.svg") 3em 0;
     background: black;
     transition: top 500ms, height 500ms;
@@ -89,6 +90,7 @@ body.dark {
 .capped::after {
     bottom: 20.9em;
     height: 2.16em;
+    -webkit-mask-size: 3em 2.16em;
     mask-size: 3em 2.16em;
 }
 @keyframes rainbow-run {
