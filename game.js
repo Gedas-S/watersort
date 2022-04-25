@@ -32,12 +32,13 @@ function pour(source, target) {
     }
 
     if (bottle_space <= 0) {
-        display("target bottle full")
+        display("Bottle full")
     }
     else if (target.lastChild && color != target.lastChild.style.backgroundColor) {
-        display("pouring on wrong color")
+        display("Cannot mix")
     }
     else {
+        display("&nbsp;")
         let amount = bottle_space
         amount = remove_water(source, amount)
         add_water(target, color, amount, true)

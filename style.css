@@ -9,8 +9,9 @@ body.dark {
 }
 
 #messages, #menu {
-    width: 100%;
+    width: calc(100% - 3em);
     text-align: center;
+    white-space: nowrap;
     font-size: 1.7em;
     font-family: 'Corbel', 'Trebuchet MS', Arial, sans-serif;
     margin-top: 0.5em;
@@ -161,7 +162,7 @@ body.dark {
     color: #BBB
 }
 #toolbar div.inactive {
-    color: #999;
+    display: none;
 }
 
 #menu {

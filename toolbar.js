@@ -24,9 +24,7 @@ function check_button_status() {
     const inactive = document.getElementById("undo-button").classList.contains("inactive")
     if (undo_history.length && inactive) {
         document.getElementById("undo-button").classList.remove("inactive")
-        document.getElementById("reset-button").classList.remove("inactive")
     } else if (!undo_history.length && !inactive) {
         document.getElementById("undo-button").classList.add("inactive")
-        document.getElementById("reset-button").classList.add("inactive")
     }
 }

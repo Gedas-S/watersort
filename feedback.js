@@ -1,6 +1,6 @@
 function display(message){
     let displayer = document.getElementById("messages")
-    displayer.textContent = message
+    displayer.innerHTML = message
 }
 
 const victory_message = [
