@@ -151,6 +151,7 @@ function start_game() {
     if (!level_data) {
         level_data = make_level(level)
     }
+    document.getElementById("level-no").innerText = level
     
     const game = document.getElementById("game")
     game.appendChild(level_data)

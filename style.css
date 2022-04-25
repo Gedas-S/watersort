@@ -114,6 +114,20 @@ body.dark {
     border-radius: 0 0 1.75em 1.75em;
 }
 
+#level-no {
+    height: 2.5em;
+    font-size: 2.5em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #CCC;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.dark #level-no {
+    color: #444;
+}
+
 #toolbar {
     height: 2.5em;
     position: absolute;

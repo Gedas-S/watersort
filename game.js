@@ -88,6 +88,7 @@ function check_win() {
     localStorage.setItem("water-level", old_level + 1 + "")
 
     const level = make_level(old_level + 1)
+    document.getElementById("level-no").innerText = old_level + 1
     transition_level(level)
 }
 
