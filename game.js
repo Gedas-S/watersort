@@ -61,7 +61,24 @@ function remove_water(source, bottle_space) {
         add_height(source.lastChild, -bottle_space, true)
         amount = bottle_space
     } else {
-        source.removeChild(source.lastChild)
+        const water = source.lastChild
+        const rect = water.getBoundingClientRect()
+        source.removeChild(water)
+        if (!(localStorage.getItem("water-disable-transitions") == "true")) {
+            const game = document.getElementById("game")
+            water.classList.add("detached")
+            if (source.children.length == 0) {
+                water.classList.add("bottom")
+            }
+            game.prepend(water)
+            const game_rect = game.getBoundingClientRect()
+            water.style.left = rect.x + "px"
+            water.style.bottom = game_rect.y + game_rect.height - rect.y - rect.height + "px"
+            water.animate({height: [water.style.height, 0]}, Math.abs(amount * 2))
+            water.animate({transform: ["translateY(0)", "translateY(2.04em)"], easing: "ease"}, 300)
+            water.style.height = 0
+            setTimeout(()=>{game.removeChild(water)}, Math.abs(amount * 2))
+        }
     }
     return amount
 }

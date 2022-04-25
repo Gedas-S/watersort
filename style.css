@@ -23,12 +23,12 @@ body.dark {
     width: 100%;
 }
 #game.transition {
-    transition: left 1000ms ease-in-out;
+    transition: left 1000ms ease;
     left: -100%;
     width: 200%;
 }
 #game.transition.slow {
-    transition: left 5000ms ease-in-out;
+    transition: left 5000ms ease;
 }
 #game * {
     box-sizing: content-box;
@@ -112,8 +112,13 @@ body.dark {
     width: 3em;
     height: 0;
 }
+.water.detached {
+    position: absolute;
+    transform: translateY(2.04em);
+    z-index: -1;
+}
 
-.water:first-of-type {
+.bottle .water:first-of-type, .water.detached.bottom {
     border-radius: 0 0 1.75em 1.75em;
 }
 
