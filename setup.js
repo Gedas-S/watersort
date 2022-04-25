@@ -50,9 +50,8 @@ function make_level(n) {
     const color_count = Math.floor(difficulty)
 
     // make full bottles first
-    const color_step = color_list.length / color_count / 2
     for (let i = 0; i < color_count; i++) {
-        const color = color_list[Math.floor(color_step * (i * 2 + 1))]
+        const color = color_list[i % color_list.length]
         const bottle = add_bottle(color)
         bottles.push(bottle)
         sources.push(i)
