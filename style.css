@@ -67,15 +67,14 @@ body.dark {
     content: "";
     height: 0;
     width: 3em;
-    background-image: url("assets/mystical-unicorn.png");
-    background-repeat: no-repeat;
-    background-size: 3em 2.16em;
+    mask: url("assets/mystical-unicorn.png") 3em 0;
+    background: black;
     transition: top 500ms, height 500ms;
     position: absolute;
     top: 3em;
 }
 .dark .bottle::after {
-    filter: invert(0.5);
+    background: gray;
 }
 .slow .bottle::after {
     transition: top 1500ms, height 1500ms;
@@ -88,6 +87,16 @@ body.dark {
 .capped::after {
     top: 0.84em;
     height: 2.16em;
+    mask-size: 3em 2.16em;
+}
+@keyframes rainbow-run {
+    from {background-position-x: 0;}
+    to {background-position-x: -2em;}
+}
+.rainbow .capped::after {
+    background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
+    background-size: 2em 2.16em;
+    animation: rainbow-run linear 2.4s infinite;
 }
 
 .selected-bottle {

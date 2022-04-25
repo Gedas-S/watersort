@@ -28,6 +28,15 @@ function load_menu() {
         )}
     );
 
+    const rainbow_config = document.getElementById("rainbow")
+    rainbow_config.checked = localStorage.getItem("water-rainbow-unicorns") != "false"
+    rainbow_config.addEventListener(
+        "change", 
+        () => {localStorage.setItem(
+            "water-rainbow-unicorns", document.getElementById("rainbow").checked
+        )}
+    );
+
     const dark_config = document.getElementById("dark")
     dark_config.checked = localStorage.getItem("water-dark-mode") == "true"
     dark_config.addEventListener(
