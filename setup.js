@@ -180,10 +180,14 @@ function save_level() {
     }
     localStorage.setItem("water-save", JSON.stringify(level_data))
     localStorage.setItem("water-undo", JSON.stringify(undo_history))
+    localStorage.setItem("water-saved-level-no", localStorage.getItem("water-level"))
 }
 
 function load_level() {
     try {
+        if (localStorage.getItem("water-saved-level-no") != localStorage.getItem("water-level")) {
+            return false
+        }
         const save_data = localStorage.getItem("water-save")
         if (!save_data) {
             return false
