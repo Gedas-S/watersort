@@ -18,8 +18,9 @@ body.dark {
 }
 
 #game {
-    position: relative;
+    position: fixed;
     left: 0;
+    width: 100%;
 }
 #game.transition {
     transition: left 1000ms ease-in-out;
