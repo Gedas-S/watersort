@@ -40,7 +40,7 @@ function pour(source, target) {
     else {
         let amount = bottle_space
         amount = remove_water(source, amount)
-        add_water(target, color, amount)
+        add_water(target, color, amount, true)
         cap_full_with_single_color(target)
 
         const siblings = Array.from(source.parentNode.children)
@@ -58,7 +58,7 @@ function pour(source, target) {
 function remove_water(source, bottle_space) {
     let amount = get_height(source.lastChild)
     if (amount > bottle_space) {
-        add_height(source.lastChild, -bottle_space)
+        add_height(source.lastChild, -bottle_space, true)
         amount = bottle_space
     } else {
         source.removeChild(source.lastChild)

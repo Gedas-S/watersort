@@ -8,20 +8,24 @@ function get_height(water) {
     return parseInt(water.style.height.slice(0, dot_index) + water.style.height.slice(dot_index+1, -2))
 }
 
-function add_height(water, amount) {
+function add_height(water, amount, transition) {
     const height = (get_height(water) || 0) + amount
+    const initial_style = water.style.height || "0"
     water.style.height = Math.floor(height / 10) + "." + height % 10 + "em"
+    if (transition && !(localStorage.getItem("water-disable-transitions") == "true")) {
+        water.animate({height: [initial_style, water.style.height]}, Math.abs(amount * 2))
+    }
 }
 
-function add_water(bottle, color, amount) {
+function add_water(bottle, color, amount, transition) {
     if (bottle.lastChild && bottle.lastChild.style.backgroundColor == color) {
-        add_height(bottle.lastChild, amount)
+        add_height(bottle.lastChild, amount, transition)
         return
     }
     let fluid = document.createElement("div")
     fluid.classList.add("water")
     fluid.style.backgroundColor = color
-    fluid.style.height = add_height(fluid, amount)
+    add_height(fluid, amount, transition)
     bottle.appendChild(fluid)
 }
 

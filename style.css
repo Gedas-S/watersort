@@ -108,6 +108,7 @@ body.dark {
 
 .water {
     width: 3em;
+    height: 0;
 }
 
 .water:first-of-type {
