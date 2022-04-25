@@ -9,7 +9,12 @@ body.dark {
 }
 
 #messages {
-    width: calc(100% - 3em);
+    width: 100%;
+}
+@media screen and (max-width: 25em) {
+    #messages {
+        width: calc(100% - 3em);
+    }
 }
 .title {
     text-align: center;
