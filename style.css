@@ -73,7 +73,7 @@ body.dark {
     background: black;
     transition: top 500ms, height 500ms;
     position: absolute;
-    bottom: 18.84em;
+    bottom: 18.74em;
 }
 .dark .bottle::after {
     background: gray;
@@ -87,7 +87,7 @@ body.dark {
     border-top: 1em solid black;
 }
 .capped::after {
-    bottom: 21em;
+    bottom: 20.9em;
     height: 2.16em;
     mask-size: 3em 2.16em;
 }
