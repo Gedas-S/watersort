@@ -161,7 +161,7 @@ function start_game() {
     if (localStorage.getItem("water-dark-mode") == "true") {
         document.body.classList.add("dark")
     }
-    if (!(localStorage.getItem("water-rainbow-unicorns") == "false")) {
+    if (localStorage.getItem("water-rainbow-unicorns") == "true") {
         document.body.classList.add("rainbow")
     }
     setup_menu()

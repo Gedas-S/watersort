@@ -29,7 +29,7 @@ function load_menu() {
     );
 
     const rainbow_config = document.getElementById("rainbow")
-    rainbow_config.checked = localStorage.getItem("water-rainbow-unicorns") != "false"
+    rainbow_config.checked = localStorage.getItem("water-rainbow-unicorns") == "true"
     rainbow_config.addEventListener(
         "change", 
         () => {localStorage.setItem(
