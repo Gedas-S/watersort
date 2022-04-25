@@ -16,6 +16,7 @@ function perform_undo() {
     const bottles = document.getElementById("game").lastChild.children
     add_water(bottles[event.s], bottles[event.t].lastChild.style.backgroundColor, event.a)
     remove_water(bottles[event.t], event.a)
+    cap_full_with_single_color(bottles[event.t])
     save_level()
 }
 
