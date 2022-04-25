@@ -170,6 +170,11 @@ function start_game() {
     if (localStorage.getItem("water-rainbow-unicorns") == "true") {
         document.body.classList.add("rainbow")
     }
+    if (localStorage.getItem("water-scaledown") == "1") {
+        document.getElementById("game-container").classList.add("small")
+    } else if (localStorage.getItem("water-scaledown") == "2") {
+        document.getElementById("game-container").classList.add("tiny")
+    }
     setup_menu()
 }
 

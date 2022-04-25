@@ -7,17 +7,18 @@
         <script src="menu.js"></script>
     </head>
     <body>
-        <div id="messages">Menu</div>
+        <div class="title">Menu</div>
         <div id="toolbar">
             <a href="index.html">
                 <div id="close-button">&#10006;</div>
             </a>
         </div>
-        <div id="menu">
+        <div id="menu" class="title">
             <div>Animation: <input type="checkbox" id="transitions"></div>
             <div>Slow animation: <input type="checkbox" id="slow"></div>
             <div>Dark mode: <input type="checkbox" id="dark"></div>
             <div>Rainbow unicorns: <input type="checkbox" id="rainbow"></div>
+            <div>Tiny mode: <input type="checkbox" id="small"><input type="checkbox" id="tiny"></div>
             <div>Current level: <input type="number" id="level"></div>
         </div>
         <script>load_menu()</script>

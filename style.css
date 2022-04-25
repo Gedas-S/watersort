@@ -8,8 +8,10 @@ body.dark {
     color:#BBB
 }
 
-#messages, #menu {
+#messages {
     width: calc(100% - 3em);
+}
+.title {
     text-align: center;
     white-space: nowrap;
     font-size: 1.7em;
@@ -21,6 +23,13 @@ body.dark {
     width: 100%;
     overflow-x: hidden;
 }
+#game-container.small {
+    font-size: 0.72em;
+}
+#game-container.tiny {
+    font-size: 0.549em;
+}
+
 #game {
     position: relative;
     left: 0;
@@ -165,9 +174,6 @@ body.dark {
     display: none;
 }
 
-#menu {
-    text-align: center;
-}
 #menu > div {
     margin-top: 1em;
 }
@@ -180,4 +186,5 @@ input[type="number"] {
     font-size: 1em;
     vertical-align: middle;
     margin-top: -0.2em;
+    width: 5em;
 }
