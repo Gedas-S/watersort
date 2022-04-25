@@ -3,10 +3,12 @@ function load_menu() {
     level_config.value = parseInt(localStorage.getItem("water-level"))
     level_config.addEventListener(
         "input", 
-        () => {localStorage.setItem(
-            "water-level", 
-            document.getElementById("level").value
-        )}
+        () => {
+            let value = parseInt(document.getElementById("level").value)
+            if (value >= 1) {
+                localStorage.setItem("water-level", value)
+            }
+        }
     );
 
     const transition_config = document.getElementById("transitions")
