@@ -154,6 +154,7 @@ function start_game() {
     let level_data = load_level()
     if (!level_data) {
         level_data = make_level(level)
+        display("Sort the colors!")
     }
     document.getElementById("level-no").innerText = level
     
@@ -190,6 +191,7 @@ function save_level() {
 function load_level() {
     try {
         if (localStorage.getItem("water-saved-level-no") != localStorage.getItem("water-level")) {
+            display("Level changed")
             return false
         }
         const save_data = localStorage.getItem("water-save")
@@ -213,6 +215,7 @@ function load_level() {
         return game
     }
     catch(err) {
+        display("Save corrupt")
         console.error("Error loading level data: " + err.message)
         return
     }
