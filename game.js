@@ -107,6 +107,7 @@ function check_win() {
 
     const level = make_level(old_level + 1)
     document.getElementById("level-no").innerText = old_level + 1
+    undo_history = []
     transition_level(level)
 }
 
@@ -123,7 +124,6 @@ function transition_level(level) {
         game.classList.remove("transition")
         game.removeChild(game.firstChild)
     }
-    undo_history = []
     check_button_status()
     setTimeout(
         finish_transition, 

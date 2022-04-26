@@ -5,7 +5,17 @@ function setup_menu() {
 }
 
 function reset_level() {
-    transition_level(make_level(parseInt(localStorage.getItem("water-level"))))
+    let level
+    if (undo_history.length || localStorage.getItem("water-undo").length < 4) {
+        level = make_level(parseInt(localStorage.getItem("water-level")))
+        undo_history = []
+        display("&nbsp;")
+    } else {
+        level = load_level()
+        display("Restore")
+    }
+    transition_level(level)
+    check_button_status()
 }
 
 function perform_undo() {
@@ -17,6 +27,8 @@ function perform_undo() {
     add_water(bottles[event.s], bottles[event.t].lastChild.style.backgroundColor, event.a, true)
     remove_water(bottles[event.t], event.a)
     cap_full_with_single_color(bottles[event.t])
+    display("&nbsp;")
+    check_button_status()
     save_level()
 }
 
