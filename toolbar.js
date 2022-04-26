@@ -12,7 +12,7 @@ function reset_level() {
         display("&nbsp;")
     } else {
         level = load_level()
-        display("Restore")
+        display("Restored")
     }
     transition_level(level)
     check_button_status()
