@@ -71,11 +71,16 @@ function check_win() {
     }
 
     display_victory_message()
+    next_level()
+}
+
+function next_level() {
     const old_level = parseInt(localStorage.getItem("water-level"))
     localStorage.setItem("water-level", old_level + 1 + "")
 
     const level = make_level(old_level + 1)
-    document.getElementById("level-no").innerText = old_level + 1
+    document.getElementById("level-no").innerText = old_level + 1 +
+        (localStorage.getItem("water-gen-old") == "false" ? "N" : "")
     undo_history = []
     transition_level(level)
 }

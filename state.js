@@ -9,8 +9,9 @@ function start_game() {
         level_data = make_level(level)
         display("Sort the colors!")
     }
-    document.getElementById("level-no").innerText = level
-    
+    document.getElementById("level-no").innerText = level +
+        (localStorage.getItem("water-gen-old") == "false" ? "N" : "")
+
     const game = document.getElementById("game")
     game.appendChild(level_data)
 
@@ -20,7 +21,7 @@ function start_game() {
     if (localStorage.getItem("water-dark-mode") == "true") {
         document.body.classList.add("dark")
     }
-    if (localStorage.getItem("water-rainbow-unicorns") == "true") {
+    if (!(localStorage.getItem("water-rainbow-unicorns") == "false")) {
         document.body.classList.add("rainbow")
     }
     if (localStorage.getItem("water-scaledown") == "1") {
@@ -46,7 +47,7 @@ function transition_level(level) {
     }
     check_button_status()
     setTimeout(
-        finish_transition, 
+        finish_transition,
         localStorage.getItem("water-slow-transitions") == "true" ? 5000 : 1000
     )
 }
@@ -63,12 +64,14 @@ function save_level() {
     }
     localStorage.setItem("water-save", JSON.stringify(level_data))
     localStorage.setItem("water-undo", JSON.stringify(undo_history))
-    localStorage.setItem("water-saved-level-no", localStorage.getItem("water-level"))
+    localStorage.setItem("water-saved-level-no", localStorage.getItem("water-level") +
+        (localStorage.getItem("water-gen-old") == "true" ? "E" : ""))
 }
 
 function load_level() {
     try {
-        if (localStorage.getItem("water-saved-level-no") != localStorage.getItem("water-level")) {
+        if (localStorage.getItem("water-saved-level-no") != localStorage.getItem("water-level") +
+                (localStorage.getItem("water-gen-old") == "true" ? "E" : "")) {
             display("Level changed")
             return false
         }
