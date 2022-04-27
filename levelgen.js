@@ -76,7 +76,9 @@ function make_level_new(n) {
         let chain = [last_bottle]
         let opts = movable.slice()
         let amount = layer_size + random(3)
-        for (let i = 2 + random(opts.length-1); i > 0; i--) {
+        let difficulty_ramp = Math.floor((opts.length-2) * (difficulty-color_count))
+        let chain_length = Math.min(2 + random(opts.length-1) + random(difficulty_ramp), opts.length)
+        for (let i = 0; i < chain_length; i++) {
             let x = random(opts.length)
             chain.push(opts[x])
             opts.splice(x, 1)
