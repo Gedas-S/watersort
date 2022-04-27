@@ -18,6 +18,13 @@ function add_height(water, amount, transition) {
     }
 }
 
+function bottle_space(bottle) {
+    let bottle_space = BOTTLE_HEIGHT;
+    for (const water of bottle.children) {
+        bottle_space -= get_height(water)
+    }
+}
+
 function add_water(bottle, color, amount, transition) {
     if (bottle.lastChild && bottle.lastChild.style.backgroundColor == color) {
         add_height(bottle.lastChild, amount, transition)

@@ -26,10 +26,7 @@ function deselect(bottle) {
 
 function pour(source, target) {
     let color = source.lastChild.style.backgroundColor
-    let bottle_space = BOTTLE_HEIGHT;
-    for (const water of target.children) {
-        bottle_space -= get_height(water)
-    }
+    let bottle_space = bottle_space(target)
 
     if (bottle_space <= 0) {
         display("Bottle full")
