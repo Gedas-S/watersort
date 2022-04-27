@@ -4,6 +4,10 @@
     width: 3em;
     -webkit-mask: url("assets/mystical-unicorn.svg") 3em 0;
     mask: url("assets/mystical-unicorn.svg") 3em 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: 0em 0em;
+    mask-position: 0em 0em;
     background: black;
     transition: top 500ms, height 500ms;
     position: absolute;
@@ -32,10 +36,60 @@
     animation: rainbow-run linear 2.4s infinite;
 }
 
-.bottle:nth-child(16n+4):after {
-    mask: url("assets/1unicorn-silhouette.svg") 3em 0;
+.bottle:nth-child(12n+4):after {
+    mask-image: url("assets/1unicorn-silhouette.svg");
+    -webkit-mask-position: 0em -0.1em;
+    mask-position: 0em -0.1em;
 }
 
-.bottle:nth-child(16n+4):after {
-    mask: url("assets/2unicorn-silhouette.svg") 3em 0;
+.bottle:nth-child(12n+3):after {
+    mask-image: url("assets/2unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+2):after {
+    mask-image: url("assets/3silhouette-of-unicorn.svg");
+    -webkit-mask-position: 0em -0.1em;
+    mask-position: 0em -0.1em;
+}
+
+.bottle:nth-child(12n+1):after {
+    mask-image: url("assets/4unicorn-silhouette-3.svg");
+    -webkit-mask-position: 0em 0.1em;
+    mask-position: 0em 0.1em;
+}
+
+.bottle:nth-child(12n+5):after {
+    mask-image: url("assets/5unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+6):after {
+    mask-image: url("assets/6unicorn-silhouette-7.svg");
+    -webkit-mask-position: 0em -0.1em;
+    mask-position: 0em -0.1em;
+}
+
+.bottle:nth-child(12n+7):after {
+    mask-image: url("assets/7rearing-unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+8):after {
+    mask-image: url("assets/8wild-galloping-unicorn.svg");
+    -webkit-mask-position: 0em 0.1em;
+    mask-position: 0em 0.2em;
+}
+
+.bottle:nth-child(12n+9):after {
+    mask-image: url("assets/9arabian-unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+10):after {
+    mask-image: url("assets/10unicorn-silhouette-5.svg");
+}
+
+.bottle:nth-child(12n+11):after {
+    mask-image: url("assets/11unicorn-silhouette-4.svg");
+}
+
+.bottle:nth-child(12n):after {
+    mask-image: url("assets/12unicorn-silhouette-8.svg");
 }
