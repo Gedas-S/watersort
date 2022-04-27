@@ -1,19 +1,20 @@
-const BOTTLE_HEIGHT = 200
+const BOTTLE_HEIGHT = 40
+const VISCOSITY = 10
 
 function get_height(water) {
     const dot_index = water.style.height.indexOf(".")
     if (dot_index < 0) {
-        return parseInt(water.style.height.slice(0, -2)) * 10
+        return parseInt(water.style.height.slice(0, -2)) * 2
     }
-    return parseInt(water.style.height.slice(0, dot_index) + water.style.height.slice(dot_index+1, -2))
+    return Math.floor(parseInt(water.style.height.slice(0, dot_index) + water.style.height.slice(dot_index+1, -2)) / 5)
 }
 
 function add_height(water, amount, transition) {
     const height = (get_height(water) || 0) + amount
     const initial_style = water.style.height || "0"
-    water.style.height = Math.floor(height / 10) + "." + height % 10 + "em"
+    water.style.height = Math.floor(height / 2) + "." + (height * 5) % 10 + "em"
     if (transition && !(localStorage.getItem("water-disable-transitions") == "true")) {
-        water.animate({height: [initial_style, water.style.height]}, Math.abs(amount * 2))
+        water.animate({height: [initial_style, water.style.height]}, Math.abs(amount * VISCOSITY))
     }
 }
 

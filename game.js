@@ -75,10 +75,10 @@ function remove_water(source, bottle_space) {
             const game_rect = game.getBoundingClientRect()
             water.style.left = rect.x + "px"
             water.style.bottom = game_rect.y + game_rect.height - rect.y - rect.height + "px"
-            water.animate({height: [water.style.height, 0]}, Math.abs(amount * 2))
+            water.animate({height: [water.style.height, 0]}, Math.abs(amount * VISCOSITY))
             water.animate({transform: ["translateY(0)", "translateY(2.04em)"], easing: "ease"}, 300)
             water.style.height = 0
-            setTimeout(()=>{game.removeChild(water)}, Math.abs(amount * 2))
+            setTimeout(()=>{game.removeChild(water)}, Math.abs(amount * VISCOSITY))
         }
     }
     return amount
