@@ -1,3 +1,5 @@
+let transition_timeout
+
 function start_game() {
     let level = parseInt(localStorage.getItem("water-level"))
     if (!level) {
@@ -40,13 +42,16 @@ function transition_level(level) {
     }
 
     game.classList.add("transition")
-    game.appendChild(level)
+    game.replaceChildren(game.lastChild, level)
     const finish_transition = () => {
         game.classList.remove("transition")
         game.removeChild(game.firstChild)
     }
     check_button_status()
-    setTimeout(
+    if (transition_timeout) {
+        clearTimeout(transition_timeout)
+    }
+    transition_timeout = setTimeout(
         finish_transition,
         localStorage.getItem("water-slow-transitions") == "true" ? 5000 : 1000
     )
