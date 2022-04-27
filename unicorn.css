@@ -1,0 +1,107 @@
+.bottle::after {
+    content: "";
+    height: 0;
+    width: 3em;
+    -webkit-mask: url("assets/mystical-unicorn.svg") 3em 0;
+    mask: url("assets/mystical-unicorn.svg") 3em 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: 0em 0em;
+    mask-position: 0em 0em;
+    background: black;
+    transition: top 500ms, height 500ms;
+    position: absolute;
+    bottom: 18.74em;
+}
+.dark .bottle::after {
+    background: gray;
+}
+.slow .bottle::after {
+    transition: top 1500ms, height 1500ms;
+}
+
+.bottle.capped::after {
+    bottom: 20.9em;
+    height: 2.16em;
+    -webkit-mask-size: 3em 2.16em;
+    mask-size: 3em 2.16em;
+}
+@keyframes rainbow-run {
+    from {background-position-x: 0;}
+    to {background-position-x: -2em;}
+}
+.rainbow .capped::after {
+    background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
+    background-size: 2em 2.16em;
+    animation: rainbow-run linear 2.4s infinite;
+}
+
+.bottle:nth-child(12n+4):after {
+    -webkit-mask-image: url("assets/1unicorn-silhouette.svg");
+    mask-image: url("assets/1unicorn-silhouette.svg");
+    -webkit-mask-position: 0em -0.1em;
+    mask-position: 0em -0.1em;
+}
+
+.bottle:nth-child(12n+3):after {
+    -webkit-mask-image: url("assets/2unicorn-silhouette.svg");
+    mask-image: url("assets/2unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+2):after {
+    -webkit-mask-image: url("assets/3silhouette-of-unicorn.svg");
+    mask-image: url("assets/3silhouette-of-unicorn.svg");
+    -webkit-mask-position: 0em -0.1em;
+    mask-position: 0em -0.1em;
+}
+
+.bottle:nth-child(12n+1):after {
+    -webkit-mask-image: url("assets/4unicorn-silhouette-3.svg");
+    mask-image: url("assets/4unicorn-silhouette-3.svg");
+    -webkit-mask-position: 0em 0.1em;
+    mask-position: 0em 0.1em;
+}
+
+.bottle:nth-child(12n+5):after {
+    -webkit-mask-image: url("assets/5unicorn-silhouette.svg");
+    mask-image: url("assets/5unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+6):after {
+    -webkit-mask-image: url("assets/6unicorn-silhouette-7.svg");
+    mask-image: url("assets/6unicorn-silhouette-7.svg");
+    -webkit-mask-position: 0em -0.1em;
+    mask-position: 0em -0.1em;
+}
+
+.bottle:nth-child(12n+7):after {
+    -webkit-mask-image: url("assets/7rearing-unicorn-silhouette.svg");
+    mask-image: url("assets/7rearing-unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+8):after {
+    -webkit-mask-image: url("assets/8wild-galloping-unicorn.svg");
+    mask-image: url("assets/8wild-galloping-unicorn.svg");
+    -webkit-mask-position: 0em 0.1em;
+    mask-position: 0em 0.2em;
+}
+
+.bottle:nth-child(12n+9):after {
+    -webkit-mask-image: url("assets/9arabian-unicorn-silhouette.svg");
+    mask-image: url("assets/9arabian-unicorn-silhouette.svg");
+}
+
+.bottle:nth-child(12n+10):after {
+    -webkit-mask-image: url("assets/10unicorn-silhouette-5.svg");
+    mask-image: url("assets/10unicorn-silhouette-5.svg");
+}
+
+.bottle:nth-child(12n+11):after {
+    -webkit-mask-image: url("assets/11unicorn-silhouette-4.svg");
+    mask-image: url("assets/11unicorn-silhouette-4.svg");
+}
+
+.bottle:nth-child(12n):after {
+    -webkit-mask-image: url("assets/12unicorn-silhouette-8.svg");
+    mask-image: url("assets/12unicorn-silhouette-8.svg");
+}
