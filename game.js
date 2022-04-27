@@ -2,7 +2,7 @@ var undo_history = []
 
 function select_bottle() {
     let selected = document.getElementsByClassName("selected-bottle")
-    
+
     if (selected.length) {
         let source = selected[0]
         deselect(source)
@@ -56,34 +56,6 @@ function pour(source, target) {
 
 }
 
-function remove_water(source, bottle_space) {
-    let amount = get_height(source.lastChild)
-    if (amount > bottle_space) {
-        add_height(source.lastChild, -bottle_space, true)
-        amount = bottle_space
-    } else {
-        const water = source.lastChild
-        const rect = water.getBoundingClientRect()
-        source.removeChild(water)
-        if (!(localStorage.getItem("water-disable-transitions") == "true")) {
-            const game = document.getElementById("game")
-            water.classList.add("detached")
-            if (source.children.length == 0) {
-                water.classList.add("bottom")
-            }
-            game.prepend(water)
-            const game_rect = game.getBoundingClientRect()
-            water.style.left = rect.x + "px"
-            water.style.bottom = game_rect.y + game_rect.height - rect.y - rect.height + "px"
-            water.animate({height: [water.style.height, 0]}, Math.abs(amount * VISCOSITY))
-            water.animate({transform: ["translateY(0)", "translateY(2.04em)"], easing: "ease"}, 300)
-            water.style.height = 0
-            setTimeout(()=>{game.removeChild(water)}, Math.abs(amount * VISCOSITY))
-        }
-    }
-    return amount
-}
-
 function cap_full_with_single_color(bottle){
     if (bottle.children.length == 1 && get_height(bottle.lastChild) == BOTTLE_HEIGHT){
         bottle.classList.add("capped")
@@ -109,24 +81,4 @@ function check_win() {
     document.getElementById("level-no").innerText = old_level + 1
     undo_history = []
     transition_level(level)
-}
-
-function transition_level(level) {
-    const game = document.getElementById("game")
-    if (localStorage.getItem("water-disable-transitions") == "true") {
-        game.replaceChildren(level)
-        return
-    }
-
-    game.classList.add("transition")
-    game.appendChild(level)
-    const finish_transition = () => {
-        game.classList.remove("transition")
-        game.removeChild(game.firstChild)
-    }
-    check_button_status()
-    setTimeout(
-        finish_transition, 
-        localStorage.getItem("water-slow-transitions") == "true" ? 5000 : 1000
-    )
 }
