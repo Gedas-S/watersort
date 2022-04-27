@@ -1,0 +1,41 @@
+.bottle::after {
+    content: "";
+    height: 0;
+    width: 3em;
+    -webkit-mask: url("assets/mystical-unicorn.svg") 3em 0;
+    mask: url("assets/mystical-unicorn.svg") 3em 0;
+    background: black;
+    transition: top 500ms, height 500ms;
+    position: absolute;
+    bottom: 18.74em;
+}
+.dark .bottle::after {
+    background: gray;
+}
+.slow .bottle::after {
+    transition: top 1500ms, height 1500ms;
+}
+
+.bottle.capped::after {
+    bottom: 20.9em;
+    height: 2.16em;
+    -webkit-mask-size: 3em 2.16em;
+    mask-size: 3em 2.16em;
+}
+@keyframes rainbow-run {
+    from {background-position-x: 0;}
+    to {background-position-x: -2em;}
+}
+.rainbow .capped::after {
+    background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
+    background-size: 2em 2.16em;
+    animation: rainbow-run linear 2.4s infinite;
+}
+
+.bottle:nth-child(16n+4):after {
+    mask: url("assets/1unicorn-silhouette.svg") 3em 0;
+}
+
+.bottle:nth-child(16n+4):after {
+    mask: url("assets/2unicorn-silhouette.svg") 3em 0;
+}
