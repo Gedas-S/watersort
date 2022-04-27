@@ -36,8 +36,8 @@ function pour(source, target) {
     }
     else {
         display("&nbsp;")
-        let amount = bottle_space
-        amount = remove_water(source, amount)
+        let amount = Math.min(bottle_space, get_height(source.lastChild))
+        remove_water(source, amount, true)
         add_water(target, color, amount, true)
         cap_full_with_single_color(target)
 

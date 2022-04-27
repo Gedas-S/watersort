@@ -39,19 +39,17 @@ function add_water(bottle, color, amount, transition) {
 }
 
 
-function remove_water(source, bottle_space) {
-    let amount = get_height(source.lastChild)
-    if (amount > bottle_space) {
-        add_height(source.lastChild, -bottle_space, true)
-        amount = bottle_space
+function remove_water(bottle, amount, transition) {
+    if (amount < get_height(bottle.lastChild)) {
+        add_height(bottle.lastChild, -amount, transition)
     } else {
-        const water = source.lastChild
+        const water = bottle.lastChild
         const rect = water.getBoundingClientRect()
-        source.removeChild(water)
-        if (!(localStorage.getItem("water-disable-transitions") == "true")) {
+        bottle.removeChild(water)
+        if (transition && !(localStorage.getItem("water-disable-transitions") == "true")) {
             const game = document.getElementById("game")
             water.classList.add("detached")
-            if (source.children.length == 0) {
+            if (bottle.children.length == 0) {
                 water.classList.add("bottom")
             }
             game.prepend(water)
@@ -64,7 +62,6 @@ function remove_water(source, bottle_space) {
             setTimeout(()=>{game.removeChild(water)}, Math.abs(amount * VISCOSITY))
         }
     }
-    return amount
 }
 
 function add_bottle(color) {

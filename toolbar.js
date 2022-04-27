@@ -25,7 +25,7 @@ function perform_undo() {
     }
     const bottles = document.getElementById("game").lastChild.children
     add_water(bottles[event.s], bottles[event.t].lastChild.style.backgroundColor, event.a, true)
-    remove_water(bottles[event.t], event.a)
+    remove_water(bottles[event.t], event.a, true)
     cap_full_with_single_color(bottles[event.t])
     display("&nbsp;")
     check_button_status()
