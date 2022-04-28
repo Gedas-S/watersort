@@ -12,6 +12,9 @@ function reset_level() {
         display("&nbsp;")
     } else {
         level = load_level()
+        if (!level) {
+            return
+        }
         display("Restored")
     }
     transition_level(level)
