@@ -36,72 +36,72 @@
     animation: rainbow-run linear 2.4s infinite;
 }
 
-.bottle:nth-child(12n+4):after {
+.herd .bottle:nth-child(12n+4):after {
     -webkit-mask-image: url("assets/1unicorn-silhouette.svg");
     mask-image: url("assets/1unicorn-silhouette.svg");
     -webkit-mask-position: 0em -0.1em;
     mask-position: 0em -0.1em;
 }
 
-.bottle:nth-child(12n+3):after {
+.herd .bottle:nth-child(12n+3):after {
     -webkit-mask-image: url("assets/2unicorn-silhouette.svg");
     mask-image: url("assets/2unicorn-silhouette.svg");
 }
 
-.bottle:nth-child(12n+2):after {
+.herd .bottle:nth-child(12n+2):after {
     -webkit-mask-image: url("assets/3silhouette-of-unicorn.svg");
     mask-image: url("assets/3silhouette-of-unicorn.svg");
     -webkit-mask-position: 0em -0.1em;
     mask-position: 0em -0.1em;
 }
 
-.bottle:nth-child(12n+1):after {
+.herd .bottle:nth-child(12n+1):after {
     -webkit-mask-image: url("assets/4unicorn-silhouette-3.svg");
     mask-image: url("assets/4unicorn-silhouette-3.svg");
     -webkit-mask-position: 0em 0.1em;
     mask-position: 0em 0.1em;
 }
 
-.bottle:nth-child(12n+5):after {
+.herd .bottle:nth-child(12n+5):after {
     -webkit-mask-image: url("assets/5unicorn-silhouette.svg");
     mask-image: url("assets/5unicorn-silhouette.svg");
 }
 
-.bottle:nth-child(12n+6):after {
+.herd .bottle:nth-child(12n+6):after {
     -webkit-mask-image: url("assets/6unicorn-silhouette-7.svg");
     mask-image: url("assets/6unicorn-silhouette-7.svg");
     -webkit-mask-position: 0em -0.1em;
     mask-position: 0em -0.1em;
 }
 
-.bottle:nth-child(12n+7):after {
+.herd .bottle:nth-child(12n+7):after {
     -webkit-mask-image: url("assets/7rearing-unicorn-silhouette.svg");
     mask-image: url("assets/7rearing-unicorn-silhouette.svg");
 }
 
-.bottle:nth-child(12n+8):after {
+.herd .bottle:nth-child(12n+8):after {
     -webkit-mask-image: url("assets/8wild-galloping-unicorn.svg");
     mask-image: url("assets/8wild-galloping-unicorn.svg");
     -webkit-mask-position: 0em 0.1em;
     mask-position: 0em 0.2em;
 }
 
-.bottle:nth-child(12n+9):after {
+.herd .bottle:nth-child(12n+9):after {
     -webkit-mask-image: url("assets/9arabian-unicorn-silhouette.svg");
     mask-image: url("assets/9arabian-unicorn-silhouette.svg");
 }
 
-.bottle:nth-child(12n+10):after {
+.herd .bottle:nth-child(12n+10):after {
     -webkit-mask-image: url("assets/10unicorn-silhouette-5.svg");
     mask-image: url("assets/10unicorn-silhouette-5.svg");
 }
 
-.bottle:nth-child(12n+11):after {
+.herd .bottle:nth-child(12n+11):after {
     -webkit-mask-image: url("assets/11unicorn-silhouette-4.svg");
     mask-image: url("assets/11unicorn-silhouette-4.svg");
 }
 
-.bottle:nth-child(12n):after {
+.herd .bottle:nth-child(12n):after {
     -webkit-mask-image: url("assets/12unicorn-silhouette-8.svg");
     mask-image: url("assets/12unicorn-silhouette-8.svg");
 }

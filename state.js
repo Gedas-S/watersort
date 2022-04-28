@@ -26,6 +26,9 @@ function start_game() {
     if (!(localStorage.getItem("water-rainbow-unicorns") == "false")) {
         document.body.classList.add("rainbow")
     }
+    if (!(localStorage.getItem("water-uniqorn") == "false")) {
+        document.body.classList.add("herd")
+    }
     if (localStorage.getItem("water-scaledown") == "1") {
         document.getElementById("game-container").classList.add("small")
     } else if (localStorage.getItem("water-scaledown") == "2") {

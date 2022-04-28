@@ -63,4 +63,11 @@ function load_menu() {
         "change",
         () => {localStorage.setItem("water-gen-old", !gen_old_config.checked)}
     );
+
+    const uniqorn_config = document.getElementById("uniqorn")
+    uniqorn_config.checked = !(localStorage.getItem("water-uniqorn") == "false")
+    uniqorn_config.addEventListener(
+        "change",
+        () => {localStorage.setItem("water-uniqorn", uniqorn_config.checked)}
+    );
 }
