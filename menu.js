@@ -70,4 +70,11 @@ function load_menu() {
         "change",
         () => {localStorage.setItem("water-uniqorn", uniqorn_config.checked)}
     );
+
+    const instant_new_level_config = document.getElementById("instant-new-level")
+    instant_new_level_config.checked = !(localStorage.getItem("water-instant-new-level") == "false")
+    instant_new_level_config.addEventListener(
+        "change",
+        () => {localStorage.setItem("water-instant-new-level", instant_new_level_config.checked)}
+    );
 }

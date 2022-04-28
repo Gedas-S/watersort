@@ -60,8 +60,10 @@ function transition_level(level) {
     )
 }
 
-function save_level() {
-    const level = document.getElementById("game").lastChild
+function save_level(level = null) {
+    if (level == null){
+        level = document.getElementById("game").lastChild
+    }
     let level_data = []
     for (const bottle of level.children) {
         let bottle_data = []

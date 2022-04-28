@@ -46,9 +46,9 @@ function pour(source, target) {
             {s: siblings.indexOf(source), t: siblings.indexOf(target), a: amount}
         )
 
+        save_level()
         check_win()
         check_button_status()
-        save_level()
     }
 
 }
@@ -66,21 +66,41 @@ function cap_full_with_single_color(bottle){
 function check_win() {
     for (const bottle of document.getElementsByClassName("bottle")) {
         if (bottle.children.length != 0 && !bottle.classList.contains("capped")) {
-            return
+            return false
         }
     }
-
     display_victory_message()
-    next_level()
+    increment_level()
+    undo_history = []
+
+    if (localStorage.getItem("water-instant-new-level") == "true"){
+        next_level()
+        save_level()
+    }
+    else {
+        const new_level = make_level()
+        save_next_level(new_level)
+        document.addEventListener("click", next_level, { once : true, capture : true })
+    }
+
+    return true
 }
 
-function next_level() {
+function increment_level(){
     const old_level = parseInt(localStorage.getItem("water-level"))
     localStorage.setItem("water-level", old_level + 1 + "")
+}
 
-    const level = make_level(old_level + 1)
-    document.getElementById("level-no").innerText = old_level + 1 +
+function next_level(){
+    const current_level = parseInt(localStorage.getItem("water-level"))
+    const level = make_level(current_level)
+    document.getElementById("level-no").innerText = current_level +
         (localStorage.getItem("water-gen-old") == "false" ? "N" : "")
-    undo_history = []
     transition_level(level)
+}
+
+function save_next_level(){
+    const current_level = parseInt(localStorage.getItem("water-level"))
+    const level = make_level(current_level)
+    save_level(level)
 }
