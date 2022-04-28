@@ -35,6 +35,7 @@ function start_game() {
         document.getElementById("game-container").classList.add("tiny")
     }
     setup_menu()
+    check_win()
 }
 
 function transition_level(level) {
@@ -82,7 +83,6 @@ function load_level() {
     try {
         if (localStorage.getItem("water-saved-level-no") != localStorage.getItem("water-level") +
                 (localStorage.getItem("water-gen-old") == "true" ? "E" : "")) {
-            display("Level changed")
             return false
         }
         const save_data = localStorage.getItem("water-save")

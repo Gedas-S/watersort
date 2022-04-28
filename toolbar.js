@@ -4,7 +4,7 @@ function setup_menu() {
     check_button_status()
 }
 
-function reset_level() {
+function reset_level(event) {
     let level
     if (undo_history.length || localStorage.getItem("water-undo").length < 4) {
         level = make_level(parseInt(localStorage.getItem("water-level")))
@@ -19,6 +19,10 @@ function reset_level() {
     }
     transition_level(level)
     check_button_status()
+    if (check_win()) {
+        event.stopPropagation()
+        display("Restored")
+    }
 }
 
 function perform_undo() {
