@@ -42,8 +42,8 @@ function make_level_new(n) {
     }
 
     const move = (source, target, amount) => {
-        if (amount == 0) {throw amount}
         amount = Math.min(amount, get_bottle_space(target))
+        if (amount == 0) {console.log("zero move during levelgen")}
         add_water(target, source.lastChild.style.backgroundColor, amount)
         remove_water(source, amount)
     }
@@ -64,7 +64,6 @@ function make_level_new(n) {
                 movable.splice(i, 1)
             }
         }
-        window.movable = movable
         // generate chains until all splits are too small for defined difficulty
         if (movable.length < 2) {
             break
@@ -84,6 +83,7 @@ function make_level_new(n) {
             opts.splice(x, 1)
         }
 
+        let move_made = false
         for (let i=0; i < chain.length - 1; i++) {
             // each chain move does a bottom split of the top color,
             // leaving space for any move generated above
@@ -93,17 +93,29 @@ function make_level_new(n) {
                 i--
                 continue
             }
+            move_made = true
             move(chain[i+1], chain[i], amt)
             // for each step, generate a chance that something has to be moved into the bottle
             // during the operation from a bottle not participating in the chain
             if (opts.length && random(opts.length) * random(movable.length) == 1) {
                 let third = random(opts.length)
-                move(opts[third], chain[i+1], amount)
+                if (get_height(opts[third].lastChild) > amount * 2) {
+                    move(opts[third], chain[i+1], amount)
+                }
                 opts.splice(third, 1)
             }
         }
-        window.last_bottle = last_bottle
-        move(last_bottle, chain[chain.length-1], get_height(last_bottle.lastChild))
+        if (move_made) {
+            move(last_bottle, chain[chain.length-1], get_height(last_bottle.lastChild))
+        }
+        for (const target of bottles) {
+            if (!last_bottle.children.length) {
+                break
+            }
+            if (get_bottle_space(target) > 0) {
+                move(last_bottle, target, get_height(last_bottle.lastChild))
+            }
+        }
     }
     return bottles
 }
