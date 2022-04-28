@@ -95,7 +95,7 @@ function next_level(){
     const current_level = parseInt(localStorage.getItem("water-level"))
     const level = make_level(current_level)
     document.getElementById("level-no").innerText = current_level +
-        (localStorage.getItem("water-gen-old") == "false" ? "N" : "")
+        (localStorage.getItem("water-gen-old") == "true" ? "E" : "")
     transition_level(level)
 }
 

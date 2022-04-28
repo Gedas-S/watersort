@@ -12,7 +12,7 @@ function start_game() {
         display("Sort the colors!")
     }
     document.getElementById("level-no").innerText = level +
-        (localStorage.getItem("water-gen-old") == "false" ? "N" : "")
+        (localStorage.getItem("water-gen-old") == "true" ? "E" : "")
 
     const game = document.getElementById("game")
     game.appendChild(level_data)

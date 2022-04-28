@@ -58,7 +58,7 @@ function load_menu() {
     tiny_config.addEventListener("change", tiny_callback);
 
     const gen_old_config = document.getElementById("gen-new")
-    gen_old_config.checked = localStorage.getItem("water-gen-old") == "false"
+    gen_old_config.checked = !(localStorage.getItem("water-gen-old") == "true")
     gen_old_config.addEventListener(
         "change",
         () => {localStorage.setItem("water-gen-old", !gen_old_config.checked)}

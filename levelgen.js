@@ -1,7 +1,7 @@
 function make_level(n) {
-    let level_gen = make_level_old
-    if (localStorage.getItem("water-gen-old") == "false") {
-        level_gen = make_level_new
+    let level_gen = make_level_new
+    if (localStorage.getItem("water-gen-old") == "true") {
+        level_gen = make_level_old
     }
     let bottles = level_gen(n)
 
