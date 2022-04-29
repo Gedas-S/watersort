@@ -57,11 +57,11 @@ function load_menu() {
     small_config.addEventListener("change", tiny_callback);
     tiny_config.addEventListener("change", tiny_callback);
 
-    const gen_old_config = document.getElementById("gen-new")
-    gen_old_config.checked = !(localStorage.getItem("water-gen-old") == "true")
-    gen_old_config.addEventListener(
+    const gen_config = document.getElementById("gen")
+    gen_config.value = localStorage.getItem("water-gen-old") || "false"
+    gen_config.addEventListener(
         "change",
-        () => {localStorage.setItem("water-gen-old", !gen_old_config.checked)}
+        () => {localStorage.setItem("water-gen-old", gen_config.value)}
     );
 
     const uniqorn_config = document.getElementById("uniqorn")

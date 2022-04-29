@@ -1,6 +1,7 @@
 let transition_timeout
 
 function start_game() {
+    apply_settings()
     let level = parseInt(localStorage.getItem("water-level"))
     if (!level) {
         level = 1
@@ -11,12 +12,16 @@ function start_game() {
         level_data = make_level(level)
         display("Sort the colors!")
     }
-    document.getElementById("level-no").innerText = level +
-        (localStorage.getItem("water-gen-old") == "true" ? "E" : "")
+    document.getElementById("level-no").innerText = level + get_level_letter()
 
     const game = document.getElementById("game")
     game.appendChild(level_data)
 
+    setup_menu()
+    check_win()
+}
+
+function apply_settings() {
     if (localStorage.getItem("water-slow-transitions") == "true") {
         game.classList.add("slow")
     }
@@ -34,8 +39,15 @@ function start_game() {
     } else if (localStorage.getItem("water-scaledown") == "2") {
         document.getElementById("game-container").classList.add("tiny")
     }
-    setup_menu()
-    check_win()
+}
+
+function get_level_letter(non) {
+    if (localStorage.getItem("water-gen-old") == "true") {
+        return "E"
+    } else if (localStorage.getItem("water-gen-old") == "beta") {
+        return "D"
+    }
+    return non ? "" : "N"
 }
 
 function transition_level(level) {
@@ -81,8 +93,7 @@ function save_level(level = null) {
 
 function load_level() {
     try {
-        if (localStorage.getItem("water-saved-level-no") != localStorage.getItem("water-level") +
-                (localStorage.getItem("water-gen-old") == "true" ? "E" : "")) {
+        if (localStorage.getItem("water-saved-level-no") != localStorage.getItem("water-level") + get_level_letter(true)) {
             return false
         }
         const save_data = localStorage.getItem("water-save")

@@ -2,6 +2,8 @@ function make_level(n) {
     let level_gen = make_level_new
     if (localStorage.getItem("water-gen-old") == "true") {
         level_gen = make_level_old
+    } else if (localStorage.getItem("water-gen-old") == "beta") {
+        level_gen = make_level_dual_chain
     }
     let bottles = level_gen(n)
 

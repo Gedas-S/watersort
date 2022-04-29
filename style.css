@@ -170,3 +170,7 @@ input[type="number"] {
     margin-top: -0.2em;
     width: 5em;
 }
+select {
+    background-color: white;
+    font-size: 0.8em;
+}
