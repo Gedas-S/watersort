@@ -23,6 +23,113 @@ function make_level(n) {
     return level
 }
 
+function make_level_dual_chain(n) {
+    let bottles = []
+
+    const random = random_generator(n)
+    const difficulty = Math.log(n) * 1.5 + 2
+    const color_count = Math.floor(difficulty)
+    const layer_size = Math.floor(15 / Math.log10(n+3) - 15 / n)
+
+    // make full bottles first
+    for (let i = 0; i < color_count; i++) {
+        const color = color_list[i % color_list.length]
+        bottles.push(add_bottle(color))
+    }
+    // two extra empty bottles
+    for (let i = color_count; i < 2 + color_count; i++) {
+        bottles.push(add_bottle())
+    }
+
+    const move = (source, target, amount) => {
+        amount = Math.min(amount, get_bottle_space(target))
+        if (amount == 0) {console.log("zero move during levelgen")}
+        add_water(target, source.lastChild.style.backgroundColor, amount)
+        remove_water(source, amount)
+    }
+
+    const last_bottle = [bottles[color_count], bottles[color_count+1]]
+    movable = bottles.slice(0, -2)
+    for (let loops=0; loops<1000; loops++) {
+
+        // check all bottles if they have enough space to be moved
+        for (let i = movable.length-1; i >= 0; i--) {
+            if (get_height(movable[i].lastChild) < layer_size * 2) {
+                movable.splice(i, 1)
+            }
+        }
+        // generate chains until all splits are too small for defined difficulty
+        if (movable.length < 2) {
+            break
+        }
+
+        // then generate a chain move which will be solved by moving something into
+        // the last empty bottle, then in a row filling some water into the just emptied space
+        // and finally emptying the bottle
+        let chains = [[last_bottle[0]], [last_bottle[1]]]
+        let opts = movable.slice()
+        let amount = layer_size + random(3)
+        let chain_length = Math.min(2 + random(opts.length-1), opts.length)
+        for (let i = 0; i < chain_length; i++) {
+            let x = random(opts.length)
+            chains[0].push(opts[x])
+            opts.splice(x, 1)
+        }
+        // try to make a secondary chain
+        let difficulty_ramp = Math.floor((opts.length-2) * (difficulty-color_count))
+        chain_length = Math.min(2 + random(opts.length-1) + random(difficulty_ramp), opts.length)
+        for (let i = 0; i < chain_length; i++) {
+            let x = random(opts.length)
+            chains[1].push(opts[x])
+            opts.splice(x, 1)
+        }
+
+        let move_made = false
+        let force_chain = -1
+        while (chains[0].length-1 || chains[1].length-1) {
+            let chain_index = random(chains[0].length + chains[1].length - 2) >= (chains[0].length - 1) ? 1 : 0
+            if (force_chain >= 0 && chains[force_chain].length >= 2) {
+                chain_index = force_chain
+                force_chain = -1
+            }
+            let chain = chains[chain_index]
+            // each chain move does a bottom split of the top color,
+            // leaving space for any move generated above
+            let amt = get_height(chain[1].lastChild) - amount
+            if (amt <= 0) {
+                chain.splice(1, 1)
+                continue
+            }
+            move_made = true
+            move(chain[1], chain.splice(0, 1)[0], amt)
+            // for each step, generate a chance that a layer is moved from the other chain
+            if (chains[1-chain_index].length && random(3) == 1) {
+                let third = chains[1-chain_index][0]
+                if (third.lastChild && get_height(third.lastChild) > amount * 3 && get_bottle_space(chain[0]) > amount) {
+                    force_chain = 1-chain_index
+                    move(third, chain[0], amount)
+                }
+            }
+        }
+        for (let i = 0; i <= 1; i++) {
+            if (last_bottle[i].lastChild) {
+                move(last_bottle[i], chains[i][0], get_height(last_bottle[i].lastChild))
+            }
+        }
+        for (let i = 0; i <= 1; i++) {
+            for (const target of bottles) {
+                if (!last_bottle[i].children.length) {
+                    break
+                }
+                if (get_bottle_space(target) > 0) {
+                    move(last_bottle[i], target, get_height(last_bottle[i].lastChild))
+                }
+            }
+        }
+    }
+    return bottles
+}
+
 function make_level_new(n) {
     let bottles = []
 
