@@ -206,10 +206,11 @@ function make_level_new(n) {
             move(chain[i+1], chain[i], amt)
             // for each step, generate a chance that something has to be moved into the bottle
             // during the operation from a bottle not participating in the chain
-            if (opts.length && random(opts.length) * random(movable.length) == 1) {
+            let target_space = get_bottle_space(chain[i+1])
+            if (target_space > amount && opts.length && random(opts.length) * random(movable.length) == 1) {
                 let third = random(opts.length)
                 if (get_height(opts[third].lastChild) > amount * 2) {
-                    move(opts[third], chain[i+1], amount)
+                    move(opts[third], chain[i+1], Math.min(amount, target_space - amount))
                 }
                 opts.splice(third, 1)
             }
